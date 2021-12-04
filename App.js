@@ -9,6 +9,10 @@ import TicketMasterApp from './Apps/TicketMasterApp';
 function App() {
   const [lat, setLat] = useState(null);
   const [long, setLon] = useState(null);
+  const propsObject = { 
+    long: long,
+    lat: lat
+   }
 
   const getLocation = () => {
 
@@ -19,7 +23,7 @@ function App() {
       console.log("Locating...");
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log(null);
+          console.log(position);
           setLat(position.coords.latitude);
           setLon(position.coords.longitude);
         }
@@ -41,7 +45,7 @@ function App() {
  return (
 
     <div>
-      <WeatherApp />
+      <WeatherApp coords={propsObject}/>
       {/* <TicketMasterApp /> */}
     
       <h6>Coords:</h6>
